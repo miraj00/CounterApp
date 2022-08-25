@@ -2,9 +2,7 @@
 
 <p> The current counter is at : {{counter}}</p>
 
-
 <button (click)="incrementCounter()"> Click Me </button>
-
 
 <button (click)="decrementCounter()"> Click Me to decrease </button>
 <!-- When button is clicked it does something-->
@@ -15,11 +13,19 @@
             <th>Name</th>
         </tr>
     </thead>
-<tbody>
+  <tbody>
         <tr *ngFor="let name of names">
         <td>{{name}}</td>
-        </tr>
-    
-</tbody>
-
+        </tr> 
+  </tbody>
 </table>
+
+<!-- use  ctrl + K + C == to comment out multiple row  -->
+<!-- use  ctrl + K + U == to uncomment multiple row  -->
+<!--   Form module is used so to use ngSubmit -->
+
+<form (ngSubmit)="addName()">
+    <label for="name">What is your name</label>
+    <input name="name" id="name" [(ngModel)] ="newName">
+    <button type="submit">Submit</button>
+</form>

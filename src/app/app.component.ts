@@ -16,5 +16,11 @@ export class AppComponent {
     this.counter -=1;
   }
 
-names:string[] = ['George', 'Kyla', 'Julie']
+names:string[] = ['George', 'Kyla', 'Julie'];
+
+newName:string ='';
+
+  addName():void {
+    this.names.push(this.newName);
+  }
 }
