@@ -8,3 +8,18 @@
 
 <button (click)="decrementCounter()"> Click Me to decrease </button>
 <!-- When button is clicked it does something-->
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+<tbody>
+        <tr *ngFor="let name of names">
+        <td>{{name}}</td>
+        </tr>
+    
+</tbody>
+
+</table>

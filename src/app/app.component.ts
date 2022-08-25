@@ -15,4 +15,6 @@ export class AppComponent {
   decrementCounter():void {
     this.counter -=1;
   }
+
+names:string[] = ['George', 'Kyla', 'Julie']
 }
