@@ -26,6 +26,47 @@
 
 <form (ngSubmit)="addName()">
     <label for="name">What is your name</label>
-    <input name="name" id="name" [(ngModel)] ="newName">
+    <input name="name" id="name" [(ngModel)] ="newNameg">
     <button type="submit">Submit</button>
 </form>
+
+
+<form (ngSubmit)="changeName()">
+    <label for="name">Enter a name!</label>
+    <input name="name" id="name" [(ngModel)]="newName">
+    <button type="submit">Add name</button>
+  </form>
+  
+
+  
+  <!--Form with validation-->
+  <!--minlength, maxlength, required, email, pattern-->
+  <form #userForm="ngForm" (ngSubmit)="submitForm()">
+    <p>
+      <label for="firstname">First Name </label>
+      <input #firstName="ngModel" type="text" id="firstname" name="firstname" required minlength="1" [(ngModel)]="user.firstName">
+    </p>
+    <div *ngIf="!firstName?.valid && (firstName?.dirty || firstName?.touched)" class="error">
+      <div *ngIf="firstName.errors?.['required']">
+        First Name is required
+      </div>
+      <div *ngIf="firstName.errors?.['minlength']">
+        First Name Minimum Length is {{firstName.errors?.['minlength'].requiredLength}}
+      </div>
+    </div>
+    <p>
+      <label for="lastname">Last Name </label>
+      <input type="text" id="lastname" name="lastname" required maxlength="15" pattern="^[a-zA-Z]+$" [(ngModel)]="user.lastName">
+    </p>
+    <p>
+      <label for="email">Email </label>
+      <input type="text" id="email" name="email" required email [(ngModel)]="user.email">
+    </p>
+    <p>
+      <label for="acceptedTerms">Accept TOC</label>
+      <input type="checkbox" id="acceptedTerms" name="acceptedTerms" [(ngModel)]="user.acceptedTerms">
+    </p>
+    <p>
+      <button type="submit" [disabled]="!userForm.valid">Submit</button>
+    </p>
+  </form>
